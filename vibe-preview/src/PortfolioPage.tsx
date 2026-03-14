@@ -450,16 +450,16 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* Marquee：高度 100px，字号 26px，一词一图（star/Flower 32px），整体向左连续滚动 */}
-      <div className="marquee flex h-[100px] w-full items-center overflow-hidden bg-[#00D50C] text-white">
-        <div className="marquee-content font-playfair flex shrink-0 items-center gap-6 text-[28px] font-extrabold italic">
+      {/* Marquee：随屏幕变小整体缩小，移动端 58px 高，桌面端 100px；文字与图标同比例缩放 */}
+      <div className="marquee flex h-[58px] w-full items-center overflow-hidden bg-[#00D50C] text-white md:h-[80px] lg:h-[100px]">
+        <div className="marquee-content font-playfair flex shrink-0 items-center gap-3 text-base font-extrabold italic md:gap-6 md:text-[22px] lg:text-[28px]">
           {marqueeItems.map((item, idx) => (
-            <span key={`${item.word}-${idx}`} className="flex items-center gap-6">
+            <span key={`${item.word}-${idx}`} className="flex items-center gap-3 md:gap-6">
               {item.word}
               <img
                 src={item.icon === "star" ? "/work/star.svg" : "/work/Flower.svg"}
                 alt=""
-                className="h-7 w-7 shrink-0"
+                className="h-4 w-4 shrink-0 md:h-6 md:w-6 lg:h-7 lg:w-7"
                 width={28}
                 height={28}
               />

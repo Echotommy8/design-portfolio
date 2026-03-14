@@ -273,6 +273,12 @@ body {
   overflow-x: hidden;
   box-sizing: border-box;
 }
+@media (max-width: 768px) {
+  #contact.contact-section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
 #contact .contact-inner {
   width: 100%;
   max-width: 1280px;
