@@ -6,6 +6,15 @@
   --accent-green: #00D50C;
   --dark-navy: #1C2339;
   --bg-light: #F9FBFA;
+  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* 視窗與安全區域：消除右側空白，禁止橫向捲動 */
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
 html,
@@ -46,9 +55,38 @@ body {
     url("/images/hero.webp") center / cover no-repeat;
 }
 
-/* Home - 渐变背景：顶部 #F5F5F5 → 中间白 → 底部 #d6fff2 */
+/* ========== Hero Section 佈局重構（iOS/Android 實機穩定） ========== */
 #home.hero-clean {
   background: linear-gradient(180deg, #F5F5F5 0%, #ffffff 50%, #d6fff2 100%) !important;
+}
+
+/* 移動端：文案容器用 padding 撐開 200px，flex 不擴張避免爭奪高度 */
+.hero-copy-wrap {
+  flex: 0 0 auto;
+  justify-content: flex-start;
+  padding-top: 200px;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .hero-copy-wrap {
+    flex: initial;
+    padding-top: 0;
+  }
+}
+
+/* 標題字號：clamp 防止長單詞溢出導致橫向捲動 */
+.hero-title {
+  font-size: clamp(1.25rem, 4.5vw + 1rem, 2rem);
+}
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 2.25rem;
+  }
+}
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: 3rem;
+  }
 }
 
 /* Logo 旁名字字重 500 */
@@ -144,6 +182,24 @@ body {
   100% {
     transform: translateX(-50%);
   }
+}
+
+/* ========== Dock 底部浮動導航：膠囊型、安全區域、居中 ========== */
+.dock-wrapper {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(40px + var(--safe-area-inset-bottom));
+  z-index: 50;
+}
+.dock-nav {
+  width: 90%;
+  max-width: 400px;
+  padding-bottom: var(--safe-area-inset-bottom);
+}
+.dock-nav > button {
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 .hover-lift {
@@ -277,6 +333,7 @@ body {
   #contact.contact-section {
     padding-left: 20px;
     padding-right: 20px;
+    padding-bottom: 120px;
   }
 }
 #contact .contact-inner {
@@ -290,11 +347,16 @@ body {
   box-sizing: border-box;
 }
 
-/* 上模块：Logo + 文案 */
+/* 上模块：Logo + 文案；与下模块间距随屏幕缩小而变小 */
 #contact .contact-top {
   width: 100%;
   text-align: left;
-  margin-bottom: 80px;
+  margin-bottom: 32px;
+}
+@media (min-width: 768px) {
+  #contact .contact-top {
+    margin-bottom: 80px;
+  }
 }
 #contact .contact-logo {
   display: block;

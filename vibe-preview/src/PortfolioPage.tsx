@@ -183,9 +183,9 @@ export default function PortfolioPage() {
       {/* Hero Section - Figma: 1440×880, pt 120px, gap 40px；右上角 logo + 自我介绍 + 常用链接；核心文案绿色词打字效果 */}
       <section
         id="home"
-        className="hero-clean flex h-screen min-h-[100dvh] w-full flex-col items-center gap-6 pt-8 text-center mobile-padding md:gap-10 md:pt-[58px]"
+        className="hero-clean hero-section flex min-h-[100dvh] w-full flex-col items-center gap-6 pt-8 text-center mobile-padding md:gap-10 md:pt-[58px]"
       >
-        <div className="mx-auto flex min-h-full w-full max-w-[1440px] flex-1 flex-col items-center px-4 md:gap-10">
+        <div className="hero-inner mx-auto flex w-full max-w-[1440px] flex-col items-center px-4 md:min-h-full md:flex-1 md:gap-10">
           {/* 顶部：logo + Echo Xu 位置不变；第二行桌面端显示 */}
           <div className="flex w-full shrink-0 flex-col">
             <div className="flex items-center gap-2">
@@ -223,9 +223,9 @@ export default function PortfolioPage() {
             </div>
           </div>
 
-          {/* 核心文案：移动端距横线 200px 后从顶部排布（中间偏上）；桌面端 940px 居中、距上 120px */}
-          <div className="mt-[200px] flex flex-1 flex-col items-center justify-start md:mt-0 md:flex-initial md:justify-start">
-            <h1 className="mx-auto w-full max-w-[940px] font-playfair text-[32px] font-bold leading-[1.5] tracking-tight text-[var(--dark-navy)] md:mt-[120px] md:text-[36px] lg:text-[48px]">
+          {/* 核心文案：移动端 padding-top 200px 精確留白；桌面端 940px 居中、距上 120px */}
+          <div className="hero-copy-wrap flex flex-1 flex-col items-center justify-start md:flex-initial md:justify-start">
+            <h1 className="hero-title mx-auto w-full max-w-[940px] font-playfair font-bold leading-[1.5] tracking-tight text-[var(--dark-navy)] md:mt-[120px]">
               <span className="block text-center">
                 I design{" "}
                 <span className="hero-green-word selection-navy italic text-[#00D50C]">
@@ -556,9 +556,9 @@ export default function PortfolioPage() {
         </div>
       </footer>
 
-      {/* Floating Bottom Navigation */}
-      <div className="fixed bottom-[40px] left-1/2 z-50 -translate-x-1/2">
-        <nav className="hover-lift flex h-[72px] items-center gap-4 rounded-[24px] border border-white bg-[rgba(255,255,255,0.8)] p-[12px] shadow-[0_18px_45px_rgba(0,0,0,0.04)] backdrop-blur-[20px]">
+      {/* Dock：膠囊型懸浮，寬度 90% max 400px，安全區域適配 */}
+      <div className="dock-wrapper">
+        <nav className="dock-nav hover-lift flex h-[72px] items-center justify-between gap-2 rounded-[24px] border border-white bg-[rgba(255,255,255,0.8)] p-[12px] shadow-[0_18px_45px_rgba(0,0,0,0.04)] backdrop-blur-[20px]">
           {SECTION_IDS.map((id) => {
             const label = id[0].toUpperCase() + id.slice(1);
             const isActive = activeId === id;
