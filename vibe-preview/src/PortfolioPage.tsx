@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { motion } from "framer-motion";
 
 /* 作品集图片使用 public 路径，避免 Vite 压缩；将 .webp 放入 public/work/ 后改为 .webp 扩展名即可 */
 const WORK_IMAGES = {
@@ -184,9 +183,9 @@ export default function PortfolioPage() {
       {/* Hero Section - Figma: 1440×880, pt 120px, gap 40px；右上角 logo + 自我介绍 + 常用链接；核心文案绿色词打字效果 */}
       <section
         id="home"
-        className="hero-clean flex min-h-[100dvh] w-full flex-col items-center gap-6 pt-8 text-center mobile-padding md:min-h-[880px] md:gap-10 md:pt-[58px]"
+        className="hero-clean flex h-screen min-h-[100dvh] w-full flex-col items-center gap-6 pt-8 text-center mobile-padding md:gap-10 md:pt-[58px]"
       >
-        <div className="mx-auto flex min-h-[calc(100dvh-4rem)] w-full max-w-[1440px] flex-col items-center px-4 md:min-h-0 md:gap-10">
+        <div className="mx-auto flex min-h-full w-full max-w-[1440px] flex-1 flex-col items-center px-4 md:gap-10">
           {/* 顶部：logo + Echo Xu 位置不变；第二行桌面端显示 */}
           <div className="flex w-full shrink-0 flex-col">
             <div className="flex items-center gap-2">
@@ -195,12 +194,12 @@ export default function PortfolioPage() {
                 alt="Portfolio logo"
                 className="h-8 w-auto md:h-9"
               />
-              <span className="text-2xl font-bold text-[var(--dark-navy)] md:text-[24px]">
+              <span className="hero-name text-2xl text-[var(--dark-navy)] md:text-[24px]">
                 Echo Xu
               </span>
             </div>
-            <div className="mt-10 hidden w-full flex-col items-start gap-4 border-b border-[#E0E5F3] pb-4 md:flex md:flex-row md:flex-wrap md:items-center md:justify-between">
-              <p className="text-base font-light text-[var(--dark-navy)]/90">
+            <div className="mt-10 flex w-full flex-col items-start gap-4 border-b border-[#E0E5F3] pb-4 md:flex-row md:flex-wrap md:items-center md:justify-between">
+              <p className="hidden text-base font-light text-[var(--dark-navy)]/90 md:block">
                 A senior product designer with 10 years of experience
               </p>
               <div className="flex items-center gap-6 md:gap-8">
@@ -214,9 +213,7 @@ export default function PortfolioPage() {
                   <iconify-icon icon="lucide:arrow-up-right" className="text-base" />
                 </a>
                 <a
-                  href="https://drive.google.com/file/d/1c2o7p0nSVQpqg3WWqIhBMRey4tHnfTN9/view?usp=drive_link"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="https://drive.google.com/file/d/1ZGQCbtzglvKfacjhkrPgsIMKJ0CJeZ98/view?usp=sharing"
                   className="inline-flex items-center gap-1.5 text-sm font-light text-[var(--dark-navy)] hover:text-[#00D50C] hover:underline md:text-base"
                 >
                   Download CV
@@ -226,8 +223,8 @@ export default function PortfolioPage() {
             </div>
           </div>
 
-          {/* 核心文案：移动端一屏内居中；桌面端 940px 居中、距上 160px */}
-          <div className="flex flex-1 flex-col items-center justify-center md:flex-initial md:justify-start">
+          {/* 核心文案：移动端距横线 200px 后从顶部排布（中间偏上）；桌面端 940px 居中、距上 120px */}
+          <div className="mt-[200px] flex flex-1 flex-col items-center justify-start md:mt-0 md:flex-initial md:justify-start">
             <h1 className="mx-auto w-full max-w-[940px] font-playfair text-[32px] font-bold leading-[1.5] tracking-tight text-[var(--dark-navy)] md:mt-[120px] md:text-[36px] lg:text-[48px]">
               <span className="block text-center">
                 I design{" "}
@@ -258,6 +255,7 @@ export default function PortfolioPage() {
 
           <div className="flex flex-col gap-12 md:gap-16 lg:gap-24">
             {/* Project 1 – 移动端轮播 / 桌面端双栏；配图与文字间距与 AISPEECH 完全一致 */}
+            <a href="https://uu-wallet.framer.website" className="block cursor-pointer">
             <div className="work-project-card group hover-lift">
               <div className="work-project-banner mx-auto flex w-full max-w-7xl shrink-0 flex-col gap-3 md:flex-row md:gap-4 lg:gap-5">
                 {/* 移动端：轮播 */}
@@ -332,15 +330,17 @@ export default function PortfolioPage() {
 
               <div className="work-project-text flex flex-col">
                 <h3 className="text-xl font-medium text-[var(--dark-navy)] md:text-2xl">UU Wallet</h3>
-                <p className="work-desc text-sm font-normal leading-relaxed text-gray-500 max-w-full">
+                <p className="work-desc text-sm leading-relaxed text-gray-500 max-w-full">
                   Led the 0-to-1 Web3 wallet design (App/Web), establishing
                   standardized transaction systems that drove secure trading and
                   user growth.
                 </p>
               </div>
             </div>
+            </a>
 
             {/* Project 2 – 全宽单图容器 + 轮播；配图与文字间距与 UU Wallet 完全一致 */}
+            <a href="https://aispeech-dmp.framer.website" className="block cursor-pointer">
             <div className="work-project-card group hover-lift">
               <div
                 ref={carouselRef}
@@ -391,13 +391,14 @@ export default function PortfolioPage() {
 
               <div className="work-project-text flex flex-col">
                 <h3 className="text-xl font-medium text-[var(--dark-navy)] md:text-2xl">AISPEECH</h3>
-                <p className="work-desc text-sm font-normal leading-relaxed text-gray-500 max-w-full">
+                <p className="work-desc text-sm leading-relaxed text-gray-500 max-w-full">
                   Led a design team to standardize design systems and AI
                   interactions, improving usability and commercialization
                   efficiency.
                 </p>
               </div>
             </div>
+            </a>
           </div>
         </div>
       </section>
@@ -535,9 +536,7 @@ export default function PortfolioPage() {
                 <iconify-icon icon="lucide:arrow-up-right" className="text-base" />
               </a>
               <a
-                href="https://drive.google.com/file/d/1c2o7p0nSVQpqg3WWqIhBMRey4tHnfTN9/view?usp=drive_link"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="https://drive.google.com/file/d/1ZGQCbtzglvKfacjhkrPgsIMKJ0CJeZ98/view?usp=sharing"
                 id="contact-download-cv-link"
                 className="inline-flex items-center gap-1.5 text-sm font-light text-[var(--dark-navy)] hover:text-[#00D50C] hover:underline md:text-base"
               >

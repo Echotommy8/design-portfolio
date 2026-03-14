@@ -46,9 +46,14 @@ body {
     url("/images/hero.webp") center / cover no-repeat;
 }
 
-/* Home - Figma 规格：渐变背景 */
-.hero-clean {
-  background: linear-gradient(180deg, #f5f5f5 0%, #f5f5f5 50%, #d6fff2 100%);
+/* Home - 渐变背景：顶部 #F5F5F5 → 中间白 → 底部 #d6fff2 */
+#home.hero-clean {
+  background: linear-gradient(180deg, #F5F5F5 0%, #ffffff 50%, #d6fff2 100%) !important;
+}
+
+/* Logo 旁名字字重 500 */
+#home .hero-name {
+  font-weight: 500 !important;
 }
 
 /* 核心文案中绿色词 Scalable / crafted / Delightful：字间距 2% */
@@ -149,7 +154,9 @@ body {
   transform: translateY(-5px);
 }
 
-.work-desc {
+/* Works 项目简介字重 300 */
+#work .work-desc {
+  font-weight: 300 !important;
   white-space: normal;
   max-width: 100%;
 }
