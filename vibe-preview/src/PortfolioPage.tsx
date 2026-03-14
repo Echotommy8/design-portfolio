@@ -183,7 +183,7 @@ export default function PortfolioPage() {
       {/* Hero Section - Figma: 1440×880, pt 120px, gap 40px；右上角 logo + 自我介绍 + 常用链接；核心文案绿色词打字效果 */}
       <section
         id="home"
-        className="hero-clean flex h-screen min-h-[100dvh] w-full flex-col items-center gap-6 pt-8 text-center mobile-padding md:gap-10 md:pt-[58px]"
+        className="hero-clean flex min-h-[100dvh] w-full flex-col items-center gap-6 pt-8 text-center mobile-padding md:gap-10 md:pt-[58px]"
       >
         <div className="mx-auto flex min-h-full w-full max-w-[1440px] flex-1 flex-col items-center px-4 md:gap-10">
           {/* 顶部：logo + Echo Xu 位置不变；第二行桌面端显示 */}
@@ -556,8 +556,8 @@ export default function PortfolioPage() {
         </div>
       </footer>
 
-      {/* Floating Bottom Navigation */}
-      <div className="fixed bottom-[40px] left-1/2 z-50 -translate-x-1/2">
+      {/* Floating Bottom Navigation：底部安全区域适配 */}
+      <div className="nav-float-wrapper fixed left-1/2 z-50 -translate-x-1/2">
         <nav className="hover-lift flex h-[72px] items-center gap-4 rounded-[24px] border border-white bg-[rgba(255,255,255,0.8)] p-[12px] shadow-[0_18px_45px_rgba(0,0,0,0.04)] backdrop-blur-[20px]">
           {SECTION_IDS.map((id) => {
             const label = id[0].toUpperCase() + id.slice(1);

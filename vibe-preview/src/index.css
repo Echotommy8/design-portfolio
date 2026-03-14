@@ -6,21 +6,40 @@
   --accent-green: #00D50C;
   --dark-navy: #1C2339;
   --bg-light: #F9FBFA;
+  --safe-area-inset-top: env(safe-area-inset-top, 0px);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html {
+  overflow-x: hidden;
+  width: 100%;
 }
 
 html,
 body,
 #root {
   height: 100%;
+  overflow-x: hidden;
 }
 
 body {
+  width: 100%;
+  max-width: 100vw;
   font-family: "Readex Pro", sans-serif;
   background-color: var(--bg-light);
   color: var(--dark-navy);
   margin: 0;
   padding: 0;
+  padding-top: var(--safe-area-inset-top);
   scroll-behavior: smooth;
+}
+
+/* 底部悬浮导航：安全区域，避免被 Home 指示条遮挡 */
+.nav-float-wrapper {
+  bottom: calc(40px + var(--safe-area-inset-bottom));
+}
+.nav-float-wrapper nav {
+  padding-bottom: var(--safe-area-inset-bottom);
 }
 
 .font-abril {
