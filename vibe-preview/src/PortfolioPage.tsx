@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { motion } from "framer-motion";
 
 /* 作品集图片使用 public 路径，避免 Vite 压缩；将 .webp 放入 public/work/ 后改为 .webp 扩展名即可 */
 const WORK_IMAGES = {
